@@ -5,11 +5,13 @@
 import { useState } from 'react';
 import Alert from './components/Alert';
 import Button from './components/Button';
+import axios from 'axios';  // a good HTTP client
+import FetchAPI from './components/FetchAPI';
 
 
 function App() {
 
-  // [demo] code for ListGroup testing
+  ///////////////////////// [demo] code for ListGroup testing
   /*
   let cities = [
     'Haifa',
@@ -26,6 +28,8 @@ function App() {
   )
   */
 
+
+  ///////////////////////// using and modyfying alert component
   let [visibleAlert, setVisibleAlert] = useState(false);   // a -1 initially
 
   return (
@@ -33,13 +37,14 @@ function App() {
       <h1>React Doodles</h1>
       {/* [demo] dispay alert conditionally */}
       {visibleAlert &&
-      <Alert onClick={() => console.log("Alert Clicked!")} onClose={() => setVisibleAlert(false)}>
-        {/* [wip] how to addd quick inline style here? */}
-        This is a ReactNode <div>children prop</div>
-      </Alert>}
-
-      {/* [demo] onClick must fhave a function passed */}
+        <Alert onClick={() => console.log("Alert Clicked!")} onClose={() => setVisibleAlert(false)}>
+          {/* [wip] how to addd quick inline style here? */}
+          This is a ReactNode <div>children prop</div>
+        </Alert>}
+      {/* [demo] onClick must have a function passed */}
       <Button color="danger" onClick={() => setVisibleAlert(true)}>Summon Alert!</Button>
+      {/* working with API */}
+      <FetchAPI url='https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY' />
     </div>
   )
 
@@ -47,7 +52,7 @@ function App() {
 
 
 
-// boiler leftovers..
+///////////////////////// boiler leftovers..
 
 // function App() {
 //   const [count, setCount] = useState(0)
