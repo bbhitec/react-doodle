@@ -12,11 +12,13 @@ interface AlertProps {
 
 const Alert = (props: AlertProps) => {
   return (
-    <div className="alert alert-primary alert-dismissible fade show" role="alert" onClick={props.onClick}>
-      {props.children}
-      {/* [demo] adding a close button to a dismissable alert */}
-      <button onClick={props.onClose} type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+    <>
+      <div className="alert alert-primary alert-dismissible fade show" role="alert" onClick={props.onClick}>
+        {props.children}
+        {/* [demo] adding a close button to a dismissable alert */}
+        <button onClick={props.onClose} type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    </>
   )
 }
 

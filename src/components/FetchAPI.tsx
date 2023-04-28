@@ -1,3 +1,6 @@
+// [wiki] learning and experimenting with REST API handling
+
+
 import { useState } from "react";
 import Button from "./Button";
 
@@ -38,7 +41,7 @@ export default function FetchAPI({url}: Props) {
 
     return (
         <>
-            <div>FetchAPI</div>
+            <h2>FetchAPI</h2>
             <Button color="primary" onClick={apiGet}>Get NASA APOD</Button>
             <img src={imageURL} />
         </>

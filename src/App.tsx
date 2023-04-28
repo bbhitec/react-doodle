@@ -7,6 +7,8 @@ import Alert from './components/Alert';
 import Button from './components/Button';
 import axios from 'axios';  // a good HTTP client
 import FetchAPI from './components/FetchAPI';
+import './App.css'
+import InputProcess from './components/InputProcess';
 
 
 function App() {
@@ -35,16 +37,23 @@ function App() {
   return (
     <div>
       <h1>React Doodles</h1>
+
       {/* [demo] dispay alert conditionally */}
+      <h2>Alert Toggle</h2>
       {visibleAlert &&
         <Alert onClick={() => console.log("Alert Clicked!")} onClose={() => setVisibleAlert(false)}>
           {/* [wip] how to addd quick inline style here? */}
           This is a ReactNode <div>children prop</div>
         </Alert>}
+
       {/* [demo] onClick must have a function passed */}
       <Button color="danger" onClick={() => setVisibleAlert(true)}>Summon Alert!</Button>
       {/* working with API */}
       <FetchAPI url='https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY' />
+
+      {/* [demo] input processing */}
+      <InputProcess />
+
     </div>
   )
 

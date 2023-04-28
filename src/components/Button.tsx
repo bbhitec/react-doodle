@@ -12,7 +12,7 @@ const Button = ({ children, onClick, color = 'primary' }: buttonProps) => {
     return (
         <div>
             {/* [demo] composing a class name */}
-            <button className={"btn btn-" + color} onClick={onClick}>{children}</button>
+            <button className={"mb-3 btn btn-" + color} onClick={onClick}>{children}</button>
         </div>
     )
 }
