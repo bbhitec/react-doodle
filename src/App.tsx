@@ -5,10 +5,12 @@
 import { useState } from 'react';
 import Alert from './components/Alert';
 import Button from './components/Button';
-import axios from 'axios';  // a good HTTP client
-import FetchAPI from './components/FetchAPI';
 import './App.css'
 import InputProcess from './components/InputProcess';
+// various API experiments
+import FetchAPI from './components/FetchAPI';
+import FetchAPIBetter from './components/FetchAPIBetter';
+import FetchAPIReactQuery from './components/FetchAPIReactQuery';
 
 
 function App() {
@@ -49,7 +51,9 @@ function App() {
       {/* [demo] onClick must have a function passed */}
       <Button color="danger" onClick={() => setVisibleAlert(true)}>Summon Alert!</Button>
       {/* working with API */}
-      <FetchAPI url='https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY' />
+      {/* <FetchAPI url='https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY' /> */}
+      <FetchAPIBetter url='https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY' />
+      {/* <FetchAPIReactQuery url='https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY' /> */}
 
       {/* [demo] input processing */}
       <InputProcess />

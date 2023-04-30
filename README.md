@@ -2,10 +2,18 @@
 
 Learning React library in a live environment
 
+## Gains
+- Compoonents creation and manipulation
+- useState fundamentals
+- Basic text processing scenario
+- Basic API fetch
+- Enhanced API communication with axios and ReactQuery
+
+
 ## Files map
 - App.tsx - main app components rendered within a root container
-- components - folder to hold used components
-- assets/public - media files
+- /components - folder to hold used components
+- /assets/public - media files
 
 ## Tech Stack
 ![](https://img.shields.io/badge/-react-gray?logo=react&logoColor=white)

@@ -4,6 +4,7 @@
 interface buttonProps {
     children: string;
     color?: 'primary' | 'danger' | 'secondary'; // [demo] symbolize an optional prop, union describe possible values (typescript)
+    disabled?: any; // optional disable
     onClick: () => void;    // [demo] function pointer type annotation (typescript)
 }
 
