@@ -1,8 +1,8 @@
 // [wiki] fundamental react app learning
 
-// import Message from './components/Message'  // previously used for tutorial
-// import ListGroup from './components/ListGroup'
-import { useState } from 'react';
+import Message from './components/Message'  // previously used for tutorial
+import ListGroup from './components/ListGroup'
+import { useEffect, useState } from 'react';
 import Alert from './components/Alert';
 import Button from './components/Button';
 import './App.css'
@@ -16,7 +16,7 @@ import FetchAPIReactQuery from './components/FetchAPIReactQuery';
 function App() {
 
   ///////////////////////// [demo] code for ListGroup testing
-  /*
+
   let cities = [
     'Haifa',
     'Tel Aviv',
@@ -25,38 +25,109 @@ function App() {
     'Acre'
   ];
 
-  return (
-    <div>
-      <ListGroup items={cities} heading={"Cities"} />
-    </div>
-  )
-  */
 
 
   ///////////////////////// using and modyfying alert component
   let [visibleAlert, setVisibleAlert] = useState(false);   // a -1 initially
 
+
+  ////// API fetching 1
+  // let [posts, setPosts] = useState([]);
+  // const getPosts = () => {
+  //   fetch("https://jsonplaceholder.typicode.com/posts")
+  //     .then(response => response.json())
+  //     .then(json => setPosts(json))
+  // }
+
+
+  /////// API fetching 2
+  let [posts, setPosts] = useState([]);
+  const getPosts = () => {
+    fetch("https://jsonplaceholder.typicode.com/posts")
+      .then(response => response.json())
+      .then(json => {
+        console.log(json)
+        setPosts(json)
+      })
+  }
+
+  useEffect((getPosts), [])
+
+
+
+
   return (
     <div>
-      <h1>React Doodles</h1>
 
-      {/* [demo] dispay alert conditionally */}
-      <h2>Alert Toggle</h2>
-      {visibleAlert &&
-        <Alert onClick={() => console.log("Alert Clicked!")} onClose={() => setVisibleAlert(false)}>
-          {/* [wip] how to addd quick inline style here? */}
-          This is a ReactNode <div>children prop</div>
-        </Alert>}
+      {/* <div>
+        <h1>API getter</h1>
+        <button onClick={getPosts}>FETCH!</button>
 
-      {/* [demo] onClick must have a function passed */}
-      <Button color="danger" onClick={() => setVisibleAlert(true)}>Summon Alert!</Button>
-      {/* working with API */}
-      {/* <FetchAPI url='https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY' /> */}
-      <FetchAPIBetter url='https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY' />
-      {/* <FetchAPIReactQuery url='https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY' /> */}
+        {posts.map(post => {
+          return (
+            <>
+              <table>
+                <thead>
+                  <tr>
+                    <th>id</th>
+                    <th>title</th>
+                    <th>body</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>{post.id}</td>
+                    <td>{post.title}</td>
+                    <td>{post.body}</td>
+                  </tr>
+                </tbody>
 
-      {/* [demo] input processing */}
-      <InputProcess />
+              </table>
+              <pre>{JSON.stringify(post)}</pre>
+
+            </>
+
+          )
+        })}
+      </div> */}
+
+
+      {/* hiding previous doodles */}
+      <div className='hidden'>
+        <h1>React Doodles</h1>
+
+        {/* dabbling in fetches */}
+        <Button onClick={getPosts}> Get! </Button>
+        <pre>
+          {posts}
+        </pre>
+
+
+        {/* basic component */}
+        <Message />
+
+        {/* mappong component for array members */}
+        <ListGroup items={cities} heading={"Cities"} />
+
+        {/* [demo] dispay alert conditionally */}
+        <h2>Alert Toggle</h2>
+        {visibleAlert &&
+          <Alert onClick={() => console.log("Alert Clicked!")} onClose={() => setVisibleAlert(false)}>
+            {/* [wip] how to addd quick inline style here? */}
+            This is a ReactNode <div>children prop</div>
+          </Alert>}
+
+        {/* [demo] onClick must have a function passed */}
+        <Button color="danger" onClick={() => setVisibleAlert(true)}>Summon Alert!</Button>
+
+        {/* working with API */}
+        {/* <FetchAPI url='https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY' /> */}
+        <FetchAPIBetter url='https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY' />
+        {/* <FetchAPIReactQuery url='https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY' /> */}
+
+        {/* [demo] input processing */}
+        <InputProcess />
+      </div>
 
     </div>
   )
